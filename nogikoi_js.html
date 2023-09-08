@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script  type="text/javascript">
+        function avoid_click(){
+            member = document.getElementById('member').value;
+            ver    = document.getElementById('option').value;
+            range  = document.getElementById('range').value;
+
+            range = Number(range) + 1;
+            domain = "http://i-nogikoi.gree-pf.net/assets/img/member/story/n";
+
+            data = '';
+            if(member == ''){
+                member = '1';
+            }            
+            console.log(member);
+            console.log(ver);            
+            console.log(range);          
+            for(i = 1; i < range; i++){
+                if(i<10){
+                    j = "0" + i;
+                }else{
+                    j = i;
+                }
+                pose = ['a','b','c','d','e','f','g'];
+                for(k = 0 ; k < pose.length; k++){
+                    data += `<img src='` + domain + member + `_` + j + ver + `_` + pose[k] + `.png' onerror="this.style='display:none'" class='img_check' width='150px' title='` + i + pose[k] + `''>`;                          
+                }
+                data += `<br>`;
+            }
+            document.getElementById("show_data").innerHTML = data;                
+        }
+
+    </script>
+</head>
+<body>   
+    <div> 
+        <form action="" method="" id="" style="display: inline-block;">    
+            <label> 成員編號：</label>
+            <input id="member" name="member" type="number" style="width:50px" maxlength="3" min="1" value="1">
+            <label for="option">版本：</label>
+            <select id="option" name="ver" style="width:50px">                
+                <option value="">v1</option>
+                <option value="_v2">v2</option>
+                <option value="_v3">v3</option>
+                <option value="_v4">v4</option>
+                <option value="_v5">v5</option>
+                <option value="_v6">v6</option>
+                <option value="_v7">v7</option>
+            </select>
+            <label> 搜尋範圍：</label>
+            <input id="range" name="range" type="number" style="width:50px" maxlength="2" min="1" value="1">
+        </form>    
+        <button type="submit" value="" onclick="avoid_click()">提交</button>
+    </div>
+    <div>一二期生:1~37 三期生:38~49 四期生:50~65 五期生:66~76</div>
+    <div id="show_data"></div>
+</body>
+</html>
